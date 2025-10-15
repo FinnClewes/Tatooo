@@ -17,12 +17,16 @@ public class DrawWithMouse : MonoBehaviour
     private void Start()
     {
         line = GetComponent<LineRenderer>();
-        line.positionCount = 1;
-        previousPosition = transform.position;
+        
 
         line.material = new Material(Shader.Find("Sprites/Default"));
         line.startColor = lineColour;
         line.endColor = lineColour;
+        line.startWidth = 0.05f;
+        line.endWidth = 0.05f;
+
+        line.positionCount = 1;
+        previousPosition = transform.position;
     }
 
     private void Update()
