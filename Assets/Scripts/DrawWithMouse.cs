@@ -29,7 +29,7 @@ public class DrawWithMouse : MonoBehaviour
             currentPosition.z = 0f;
 
             // only draw if inside collider
-            if (drawingArea != null || drawingArea.OverlapPoint(currentPosition))
+            if (drawingArea != null && drawingArea.OverlapPoint(currentPosition))
             {
                 if (Vector3.Distance(currentPosition, previousPosition) > minDistance)
                 {
