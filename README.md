@@ -14,4 +14,3 @@ Game Dev Practicum
 #push to remote repository#
 >git push origin main
 
-its not working :(
