@@ -11,9 +11,26 @@ public class DrawWithMouse : MonoBehaviour
 
     [SerializeField] private float minDistance = 0.01f;
     [SerializeField] private Color lineColour = Color.black;
+    [SerializeField] private LineRenderer stencilLine;
 
     // reference drawing area
     [SerializeField] private Collider2D drawingArea;
+
+    private Vector3[] stencilPoints;
+
+    private void Start()
+    {
+        if (stencilLine != null)
+        {
+            stencilPoints = new Vector3[stencilLine.positionCount];
+            stencilLine.GetPositions(stencilPoints);
+            Debug.Log($"Loaded {stencilPoints.Length} stencil points from {stencilLine.name}");
+        }
+        else
+        {
+            Debug.LogWarning("Stencil Line not assigned in Inspector");
+        }
+    }
 
     private void Update()
     {
@@ -33,12 +50,17 @@ public class DrawWithMouse : MonoBehaviour
             {
                 if (Vector3.Distance(currentPosition, previousPosition) > minDistance)
                 {
-                    
                     currentLine.positionCount++;
                     currentLine.SetPosition(currentLine.positionCount - 1, currentPosition);
                     previousPosition = currentPosition;
                 }
             }
+        }
+
+        if (Input.GetMouseButtonUp(0) && currentLine != null)
+        {
+            float accuracy = CalculateAccuracy(currentLine);
+            Debug.Log($"Tattoo Accuracy: {accuracy:F2}%");
         }
     }
 
@@ -60,5 +82,36 @@ public class DrawWithMouse : MonoBehaviour
         previousPosition = Vector3.positiveInfinity;
         allLines.Add(newLine);
     }
-}
 
+    private float CalculateAccuracy(LineRenderer playerLine)
+    {
+        if (stencilPoints == null || stencilPoints.Length == 0)
+        {
+            Debug.LogWarning("No stencil assigned for accuracy check");
+            return 0f;
+        }
+
+        Vector3[] playerPoints = new Vector3[playerLine.positionCount];
+        playerLine.GetPositions(playerPoints);
+
+        float totalDistance = 0f;
+        int comparisons = 0;
+
+        foreach (Vector3 p in playerPoints)
+        {
+            float minDist = float.MaxValue;
+            foreach (Vector3 s in stencilPoints)
+            {
+                float dist = Vector3.Distance(p, s);
+                if (dist < minDist) minDist = dist;
+            }
+            totalDistance += minDist;
+            comparisons++;
+        }
+
+        float averageDistance = totalDistance / comparisons;
+        float score = Mathf.Clamp01(1f - (averageDistance / 0.1f)) * 100f;
+
+        return score;
+    }
+}
