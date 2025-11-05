@@ -54,6 +54,7 @@ public class DrawWithMouse : MonoBehaviour
         newLine.startWidth = 0.05f;
         newLine.endWidth = 0.05f;
         newLine.positionCount = 0;
+        newLine.sortingOrder = 5;
 
         currentLine = newLine;
         previousPosition = Vector3.positiveInfinity;

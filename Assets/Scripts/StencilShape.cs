@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StencilShape : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D drawingArea;
+    [SerializeField] private Collider2D drawingArea;
     [SerializeField] private int pointCount = 12;
     [SerializeField] private Color stencilColor = Color.cyan;
 
@@ -21,7 +21,7 @@ public class StencilShape : MonoBehaviour
         line.endColor = stencilColor;
         line.useWorldSpace = true;
 
-        if (drawingArea != null)
+        if (drawingArea == null)
         {
             Debug.LogError("StencilShape: No drawingArea assigned");
             return;
