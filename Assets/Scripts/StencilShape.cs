@@ -14,8 +14,8 @@ public class StencilShape : MonoBehaviour
         LineRenderer line = GetComponent<LineRenderer>();
 
         line.positionCount = pointCount;
-        line.startWidth = 0.05f;
-        line.endWidth = 0.05f;
+        line.startWidth = 0.1f;
+        line.endWidth = 0.1f;
         line.material = new Material(Shader.Find("Sprites/Default"));
         line.startColor = stencilColor;
         line.endColor = stencilColor;

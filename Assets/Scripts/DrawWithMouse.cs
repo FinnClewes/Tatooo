@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using System.Data;
 
 public class DrawWithMouse : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class DrawWithMouse : MonoBehaviour
     [SerializeField] private float minDistance = 0.01f;
     [SerializeField] private Color lineColour = Color.black;
     [SerializeField] private LineRenderer stencilLine;
+    [SerializeField] private float maxAllowedDistance;
+    [SerializeField] private TextMeshProUGUI accuracyText;
 
     // reference drawing area
     [SerializeField] private Collider2D drawingArea;
@@ -61,6 +64,11 @@ public class DrawWithMouse : MonoBehaviour
         {
             float accuracy = CalculateAccuracy(currentLine);
             Debug.Log($"Tattoo Accuracy: {accuracy:F2}%");
+
+            if (accuracyText != null )
+            {
+                accuracyText.text = $"Accuracy: {accuracy:F2}%";
+            }
         }
     }
 
@@ -110,7 +118,7 @@ public class DrawWithMouse : MonoBehaviour
         }
 
         float averageDistance = totalDistance / comparisons;
-        float score = Mathf.Clamp01(1f - (averageDistance / 0.1f)) * 100f;
+        float score = Mathf.Clamp01(1f - (averageDistance / maxAllowedDistance)) * 100f;
 
         return score;
     }
