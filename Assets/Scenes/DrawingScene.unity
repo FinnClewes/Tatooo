@@ -158,7 +158,7 @@ MonoBehaviour:
   stencilLine: {fileID: 897269646}
   maxAllowedDistance: 4
   accuracyText: {fileID: 2100429103}
-  drawingArea: {fileID: 317342476}
+  drawingArea: {fileID: 317342478}
 --- !u!120 &187061575
 LineRenderer:
   serializedVersion: 2
@@ -421,8 +421,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 317342477}
-  - component: {fileID: 317342476}
   - component: {fileID: 317342475}
+  - component: {fileID: 317342478}
   m_Layer: 0
   m_Name: DrawingArea
   m_TagString: DrawingArea
@@ -471,10 +471,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d89e1dd516101ff4580f984e9ac3765c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bcf031fa9fa5a7f419016f94fbd69974, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 10, y: 10}
   m_AdaptiveModeThreshold: 0.5
@@ -482,8 +482,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &317342476
-BoxCollider2D:
+--- !u!4 &317342477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317342474}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.298, y: 0.8314, z: 0}
+  m_LocalScale: {x: 0.53965, y: 0.579641, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &317342478
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -511,37 +526,85 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 10}
+    oldSize: {x: 15.04, y: 20.06}
     newSize: {x: 10, y: 10}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10, y: 10}
-  m_EdgeRadius: 0
---- !u!4 &317342477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 317342474}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Points:
+    m_Paths:
+    - - {x: 5.1618657, y: -10.037115}
+      - {x: -1.3382776, y: -10.022524}
+      - {x: -1.6700001, y: -9.78}
+      - {x: -2.2482696, y: -9.7863}
+      - {x: -2.543293, y: -10.024404}
+      - {x: -4.559537, y: -10.043254}
+      - {x: -4.003171, y: -9.742387}
+      - {x: -3.4662359, y: -9.200036}
+      - {x: -3.2109823, y: -8.729393}
+      - {x: -2.9741461, y: -8.486617}
+      - {x: -2.2803748, y: -8.277152}
+      - {x: -1.8758879, y: -8.183272}
+      - {x: -1.2629331, y: -7.8304257}
+      - {x: -0.70681405, y: -7.5076118}
+      - {x: -0.6494694, y: -7.2821817}
+      - {x: -0.66479707, y: -6.8920403}
+      - {x: -0.98461413, y: -6.145912}
+      - {x: -1.2365792, y: -5.413939}
+      - {x: -1.8583622, y: -4.0402985}
+      - {x: -2.0703268, y: -3.3920112}
+      - {x: -2.402013, y: -2.5783482}
+      - {x: -2.7408395, y: -1.5068007}
+      - {x: -3.4143238, y: 0.10597122}
+      - {x: -3.6493719, y: 0.7878994}
+      - {x: -4.1754847, y: 1.9737904}
+      - {x: -4.477369, y: 2.8344915}
+      - {x: -4.5845027, y: 3.2417343}
+      - {x: -4.7394924, y: 4.3323975}
+      - {x: -4.8739595, y: 6.0782704}
+      - {x: -5.041797, y: 6.7962956}
+      - {x: -5.222697, y: 7.2013426}
+      - {x: 2.8827803, y: 7.1867404}
+      - {x: 3.373296, y: 6.379516}
+      - {x: 3.5675757, y: 5.4142118}
+      - {x: 3.75528, y: 4.678996}
+      - {x: 3.9761374, y: 3.702636}
+      - {x: 4.0615916, y: 2.9744978}
+      - {x: 4.0268736, y: 2.4631038}
+      - {x: 4.131588, y: 1.9246931}
+      - {x: 4.1301947, y: 1.3878088}
+      - {x: 4.1892834, y: 0.98498094}
+      - {x: 4.231249, y: 0.52734756}
+      - {x: 4.270022, y: 0.41137385}
+      - {x: 4.2303066, y: 0.2230165}
+      - {x: 4.2010193, y: -0.43509865}
+      - {x: 4.29043, y: -0.72274274}
+      - {x: 4.2873287, y: -1.3500559}
+      - {x: 4.2208185, y: -1.5639244}
+      - {x: 4.255165, y: -1.8912296}
+      - {x: 4.2479243, y: -3.0342197}
+      - {x: 4.2326727, y: -3.7522833}
+      - {x: 4.260727, y: -4.3552012}
+      - {x: 4.2364044, y: -5.5390234}
+      - {x: 4.236273, y: -6.435395}
+      - {x: 4.141225, y: -6.545794}
+      - {x: 4.173854, y: -6.6770124}
+      - {x: 4.095024, y: -6.932548}
+      - {x: 4.082336, y: -7.220281}
+      - {x: 4.0986495, y: -7.5101423}
+      - {x: 4.2194166, y: -7.828456}
+      - {x: 4.6062546, y: -8.293692}
+      - {x: 4.864819, y: -8.84901}
+      - {x: 5.0208387, y: -9.491297}
+  m_UseDelaunayMesh: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c8bee3cb878894c97882b2f986631c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawingArea: {fileID: 317342476}
+  drawingArea: {fileID: 317342478}
   pointCount: 6
   stencilColor: {r: 0, g: 0.8705075, b: 0.99215686, a: 1}
 --- !u!1 &904001237
