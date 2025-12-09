@@ -158,7 +158,7 @@ MonoBehaviour:
   stencilLine: {fileID: 897269646}
   maxAllowedDistance: 4
   accuracyText: {fileID: 2100429103}
-  drawingArea: {fileID: 0}
+  drawingArea: {fileID: 317342478}
 --- !u!120 &187061575
 LineRenderer:
   serializedVersion: 2
@@ -471,7 +471,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bcf031fa9fa5a7f419016f94fbd69974, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c013eb7b4f1fa7a41830a8b6e3a39de3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 1
@@ -491,14 +491,14 @@ Transform:
   m_GameObject: {fileID: 317342474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43, y: 0.81, z: 0}
-  m_LocalScale: {x: 0.7633566, y: 0.579641, z: 1}
+  m_LocalPosition: {x: -0.4695, y: 0.81, z: 0}
+  m_LocalScale: {x: 0.75813043, y: 0.579641, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &317342478
-PolygonCollider2D:
+--- !u!61 &317342478
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -529,7 +529,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.74808836, y: -0.6143751}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -539,13 +539,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.53328675, y: -7.1439433}
-      - {x: 2.9502013, y: -6.9606123}
-      - {x: 2.373474, y: 6.788291}
-      - {x: -4.4827437, y: 6.874586}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 6.167309, y: 14.64439}
+  m_EdgeRadius: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,9 +886,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c8bee3cb878894c97882b2f986631c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawingArea: {fileID: 0}
+  drawingArea: {fileID: 317342478}
   pointCount: 6
   stencilColor: {r: 0, g: 0.8705075, b: 0.99215686, a: 1}
+  width: 0.2
 --- !u!1 &904001237
 GameObject:
   m_ObjectHideFlags: 0
