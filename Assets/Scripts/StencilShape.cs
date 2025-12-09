@@ -7,6 +7,7 @@ public class StencilShape : MonoBehaviour
     [SerializeField] private Collider2D drawingArea;
     [SerializeField] private int pointCount = 12;
     [SerializeField] private Color stencilColor = Color.cyan;
+    [SerializeField] private float width = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -14,8 +15,8 @@ public class StencilShape : MonoBehaviour
         LineRenderer line = GetComponent<LineRenderer>();
 
         line.positionCount = pointCount;
-        line.startWidth = 0.1f;
-        line.endWidth = 0.1f;
+        line.startWidth = width;
+        line.endWidth = width;
         line.material = new Material(Shader.Find("Sprites/Default"));
         line.startColor = stencilColor;
         line.endColor = stencilColor;
