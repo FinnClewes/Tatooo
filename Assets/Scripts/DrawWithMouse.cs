@@ -65,6 +65,8 @@ public class DrawWithMouse : MonoBehaviour
             float accuracy = CalculateAccuracy(currentLine);
             Debug.Log($"Tattoo Accuracy: {accuracy:F2}%");
 
+            GameController.Instance.EndRound(accuracy);
+
             if (accuracyText != null )
             {
                 accuracyText.text = $"Accuracy: {accuracy:F2}%";
