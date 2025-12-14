@@ -63,6 +63,6 @@ public class GameController : MonoBehaviour
         float finalScore = (accuracy * 0.7f) + (timeBonus * 0.3f); // weighted final score
 
         scoreText.text = finalScore.ToString("F1");
-        Debug.Log($"Final Score = Accuracy ({accuracy:F1}) + Time Bonus ({timeBonus:F1})");
+        Debug.Log($"Final Score = Accuracy ({accuracy:F2}) + Time Bonus ({timeBonus:F1})");
     }
 }

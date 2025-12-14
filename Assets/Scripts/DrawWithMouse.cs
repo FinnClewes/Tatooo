@@ -95,7 +95,7 @@ public class DrawWithMouse : MonoBehaviour
 
     private float CalculateAccuracy(LineRenderer playerLine)
     {
-        if (stencilPoints == null || stencilPoints.Length == 0)
+        if (stencilLine == null || stencilLine.positionCount < 2)
         {
             Debug.LogWarning("No stencil assigned for accuracy check");
             return 0f;
@@ -104,24 +104,45 @@ public class DrawWithMouse : MonoBehaviour
         Vector3[] playerPoints = new Vector3[playerLine.positionCount];
         playerLine.GetPositions(playerPoints);
 
+        Vector3[] stencilPoints = new Vector3[stencilLine.positionCount];
+        stencilLine.GetPositions(stencilPoints);
+
         float totalDistance = 0f;
-        int comparisons = 0;
+        int samples = 0;
 
         foreach (Vector3 p in playerPoints)
         {
             float minDist = float.MaxValue;
-            foreach (Vector3 s in stencilPoints)
+
+            // Compare against each stencil SEGMENT
+            for (int i = 0; i < stencilPoints.Length - 1; i++)
             {
-                float dist = Vector3.Distance(p, s);
+                float dist = DistancePointToSegment(
+                    p,
+                    stencilPoints[i],
+                    stencilPoints[i + 1]
+                    );
                 if (dist < minDist) minDist = dist;
             }
             totalDistance += minDist;
-            comparisons++;
+            samples++;
         }
 
-        float averageDistance = totalDistance / comparisons;
+        float averageDistance = totalDistance / samples;
         float score = Mathf.Clamp01(1f - (averageDistance / maxAllowedDistance)) * 100f;
 
         return score;
+    }
+
+    float DistancePointToSegment (Vector3 p, Vector3 a, Vector3 b)
+    {
+        Vector3 ab = b - a;
+        Vector3 ap = p - a;
+
+        float t = Vector3.Dot(ap, ab) / Vector3.Dot(ab, ab);
+        t = Mathf.Clamp01(t);
+
+        Vector3 closest = a + ab * t;  
+        return Vector3.Distance(p, closest);
     }
 }
