@@ -15,6 +15,10 @@ public class Cash : MonoBehaviour
     [SerializeField] private float midScore = 50f;
     [SerializeField] private float lowScore = 20f;
 
+    private void Start()
+    {
+        Debug.Log("Cash is active");
+    }
     public void RewardMoney(float finalScore)
     {
         if (finalScore >= highScore)

@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     [Header("Score UI")]
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    [SerializeField] private Cash cashSystem;
+
     private float timeRemaining;
     private bool timerActive = false;
     private bool roundOver = false;
@@ -64,5 +66,7 @@ public class GameController : MonoBehaviour
 
         scoreText.text = finalScore.ToString("F1");
         Debug.Log($"Final Score = Accuracy ({accuracy:F2}) + Time Bonus ({timeBonus:F1})");
+
+        cashSystem.RewardMoney(finalScore);
     }
 }

@@ -58,10 +58,4 @@ public class StencilShape : MonoBehaviour
 
         line.SetPositions(points);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
