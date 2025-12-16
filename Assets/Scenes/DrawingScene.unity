@@ -412,58 +412,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252876688}
   m_CullTransparentMesh: 1
---- !u!1 &292187343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 292187345}
-  - component: {fileID: 292187344}
-  m_Layer: 0
-  m_Name: Cash
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &292187344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292187343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80592bf1d1fcc5c418e71fc5f4924063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMoney: 0
-  highReward: 80
-  midReward: 50
-  lowReward: 25
-  failPenalty: 30
-  highScore: 70
-  midScore: 50
-  lowScore: 20
---- !u!4 &292187345
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292187343}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &317342474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,10 +1325,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b14ec6a1d2efe949b4d2d9672cfa57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 15
+  baseTimeLimit: 30
   timerText: {fileID: 2094277976}
   scoreText: {fileID: 484057669}
-  cashSystem: {fileID: 292187344}
+  cashSystem: {fileID: 0}
 --- !u!4 &1531721635
 Transform:
   m_ObjectHideFlags: 0
@@ -1873,4 +1821,3 @@ SceneRoots:
   - {fileID: 1675001593}
   - {fileID: 897269647}
   - {fileID: 1531721635}
-  - {fileID: 292187345}

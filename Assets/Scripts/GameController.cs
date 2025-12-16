@@ -7,15 +7,14 @@ using Unity.Collections;
 public class GameController : MonoBehaviour
 {
     [Header("Timer Settings")]
-    [SerializeField] private float timeLimit = 30f;
+    [SerializeField] private float baseTimeLimit = 30f;
     [SerializeField] private TextMeshProUGUI timerText;
 
     [Header("Score UI")]
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    [SerializeField] private Cash cashSystem;
-
     private float timeRemaining;
+    private float timeLimit;
     private bool timerActive = false;
     private bool roundOver = false;
 
@@ -29,6 +28,8 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        float difficulty = DayManager.Instance.activeCustomer.difficultyMultiplier;
+        timeLimit = baseTimeLimit * (1f / difficulty);
         ResetTimer();
     }
 
@@ -67,6 +68,9 @@ public class GameController : MonoBehaviour
         scoreText.text = finalScore.ToString("F1");
         Debug.Log($"Final Score = Accuracy ({accuracy:F2}) + Time Bonus ({timeBonus:F1})");
 
-        cashSystem.RewardMoney(finalScore);
+        Cash.Instance.RewardMoney(finalScore);
+
+        // Return to shop scene
+        DayManager.Instance.FinishTattoo();
     }
 }

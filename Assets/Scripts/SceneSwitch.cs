@@ -3,8 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
-    public void SceneChanger(string sceneName)
+    public void OnAcceptCustomer()
     {
-        SceneManager.LoadScene(sceneName);
+        DayManager.Instance.AcceptCustomer();
+    }
+
+    public void OnRefuseCustomer()
+    {
+        DayManager.Instance.RefuseCustomer();
     }
 }

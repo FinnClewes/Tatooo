@@ -1,24 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cash : MonoBehaviour
 {
+    public static Cash Instance;
+
     public float playerMoney = 0f;
+
     [Header("Cash amounts")] 
     [SerializeField] private float highReward = 80f;
     [SerializeField] private float midReward = 50f;
     [SerializeField] private float lowReward = 25f;
     [SerializeField] private float failPenalty = 30f;
+
     [Header("Score bounds")]
     [SerializeField] private float highScore = 70f;
     [SerializeField] private float midScore = 50f;
     [SerializeField] private float lowScore = 20f;
 
-    private void Start()
+     private TextMeshProUGUI cashText;
+
+    private void Awake()
     {
-        Debug.Log("Cash is active");
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        // Listen for scene changes
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Find cash UI in the new scene
+        cashText = GameObject.Find("Canvas/Cash")?.GetComponent<TextMeshProUGUI>();
+        UpdateCashUI();
+    }
+
     public void RewardMoney(float finalScore)
     {
         if (finalScore >= highScore)
@@ -39,5 +70,22 @@ public class Cash : MonoBehaviour
         }
 
         Debug.Log($"Total money: {playerMoney:F2}");
+        UpdateCashUI();
+    }
+
+    private void UpdateCashUI()
+    {
+        if (cashText != null)
+        {
+            if (playerMoney >= 0)
+            {
+                cashText.text = "€" + playerMoney.ToString("F2");
+            }
+            else
+            {
+                playerMoney = 0;
+                cashText.text = "€" + playerMoney.ToString("F2");
+            }
+        }
     }
 }
