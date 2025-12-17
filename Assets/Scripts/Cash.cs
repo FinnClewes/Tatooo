@@ -79,13 +79,18 @@ public class Cash : MonoBehaviour
         {
             if (playerMoney >= 0)
             {
-                cashText.text = "€" + playerMoney.ToString("F2");
+                cashText.text = $"€{playerMoney:F2}/€{DayManager.Instance.dailyCashGoal}";
             }
             else
             {
                 playerMoney = 0;
-                cashText.text = "€" + playerMoney.ToString("F2");
+                cashText.text = $"€{playerMoney:F2}/€{DayManager.Instance.dailyCashGoal}";
             }
         }
+    }
+
+    public void ForceRefreshUI()
+    {
+        UpdateCashUI();
     }
 }

@@ -9,7 +9,7 @@ public class DayManager : MonoBehaviour
 
     [Header("Day Settings")]
     [SerializeField] private int customersPerDay = 5;
-    [SerializeField] private float dailyCashGoal = 200f;
+    [SerializeField] public float dailyCashGoal = 200f;
 
     [Header("Customers")]
     [SerializeField] private CustomerData[] customers;
@@ -42,8 +42,10 @@ public class DayManager : MonoBehaviour
     public void StartNewDay()
     {
         customersRemaining = customersPerDay;
+        
         dayActive = true;
         PickNextCustomer();
+        UpdateCustomersUI();
 
         Debug.Log("New Day Started");
     }
@@ -86,17 +88,27 @@ public class DayManager : MonoBehaviour
         if (cm != null) 
             cm.StartCoroutine(cm.ExitAndRefresh());
 
+        UpdateCustomersUI();
+
         CheckDayEnd();
     }
 
-      ///////////////////
-     // DRAWING SCENE //
+    private void UpdateCustomersUI()
+    {
+        CustomersLeftUI ui = FindObjectOfType<CustomersLeftUI>();
+        if (ui != null)
+            ui.UpdateText();
+    }
+
+    ///////////////////
+    // DRAWING SCENE //
     ///////////////////
     public void FinishTattoo()
     {
         customersRemaining--;
         PickNextCustomer();
         SceneManager.LoadScene("ShopScene");
+        UpdateCustomersUI();
         CheckDayEnd();
     }
 
@@ -109,11 +121,17 @@ public class DayManager : MonoBehaviour
         if (cashSystem.playerMoney >= dailyCashGoal)
         {
             Debug.Log("Day complete");
+
+            dailyCashGoal += 10;
+            Cash.Instance.playerMoney = 0;
+            Cash.Instance.ForceRefreshUI();
+            
             StartNewDay();
         }
         else
         {
             Debug.Log("Game Over - cash goal not met");
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }
