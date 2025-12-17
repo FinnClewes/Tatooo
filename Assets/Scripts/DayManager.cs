@@ -35,6 +35,12 @@ public class DayManager : MonoBehaviour
 
     void Start()
     {
+        if (Cash.Instance == null)
+        {
+            Debug.LogError("Cash instance not found");
+            return;
+        }
+
         cashSystem = Cash.Instance;
         StartNewDay();
     }

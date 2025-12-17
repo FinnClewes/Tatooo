@@ -28,6 +28,12 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (DayManager.Instance == null || DayManager.Instance.activeCustomer == null)
+        {
+            Debug.LogError("DayManager or ActiveCustomer missing");
+            return;
+        }
+
         float difficulty = DayManager.Instance.activeCustomer.difficultyMultiplier;
         timeLimit = baseTimeLimit * (1f / difficulty);
         ResetTimer();

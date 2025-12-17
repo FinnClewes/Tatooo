@@ -47,6 +47,13 @@ public class Cash : MonoBehaviour
     {
         // Find cash UI in the new scene
         cashText = GameObject.Find("Canvas/Cash")?.GetComponent<TextMeshProUGUI>();
+
+        if(cashText == null)
+        {
+            Debug.LogWarning("Cash UI not found in scene: " + scene.name);
+            return;
+        }
+
         UpdateCashUI();
     }
 

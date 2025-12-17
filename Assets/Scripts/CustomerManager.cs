@@ -32,6 +32,8 @@ public class CustomerManager : MonoBehaviour
 
     public void Refresh()
     {
+        if (DayManager.Instance == null) return;
+
         CustomerData customer = DayManager.Instance.activeCustomer;
 
         if (customer == null ) return;
