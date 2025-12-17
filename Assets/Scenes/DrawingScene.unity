@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawingArea: {fileID: 317342478}
-  pointCount: 24
+  pointCount: 12
   stencilColor: {r: 0, g: 0.8705075, b: 0.99215686, a: 1}
   width: 0.1
   segmentLength: 1.2
@@ -1328,7 +1328,6 @@ MonoBehaviour:
   baseTimeLimit: 30
   timerText: {fileID: 2094277976}
   scoreText: {fileID: 484057669}
-  cashSystem: {fileID: 0}
 --- !u!4 &1531721635
 Transform:
   m_ObjectHideFlags: 0

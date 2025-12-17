@@ -640,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 792003736}
   - component: {fileID: 792003735}
+  - component: {fileID: 792003737}
   m_Layer: 0
   m_Name: DayManager
   m_TagString: Untagged
@@ -661,9 +662,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customersPerDay: 5
   dailyCashGoal: 200
+  customers:
+  - {fileID: 11400000, guid: 7bab065ef0ebe8947abea48395549429, type: 2}
+  - {fileID: 11400000, guid: 40716fd05c81a3b4297152b960d5c254, type: 2}
+  - {fileID: 11400000, guid: 4fabf0bec9a714149927bf137e3be774, type: 2}
   customersRemaining: 0
   dayActive: 1
-  activeCustomer: {fileID: 0}
 --- !u!4 &792003736
 Transform:
   m_ObjectHideFlags: 0
@@ -679,6 +683,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &792003737
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792003734}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b4ce7d5a4e30834f85ed97ff2cb449b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &825730895
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,8 +748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f2a6656d81bea479734c7ab759fff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customers:
-  - {fileID: 11400000, guid: 7bab065ef0ebe8947abea48395549429, type: 2}
   portraitImage: {fileID: 902760527}
   nameText: {fileID: 1681676493}
 --- !u!1 &902760524
@@ -1176,7 +1199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BUTTON ^
+  m_text: '^ REJECT               ACCEPT ^
 
 '
   m_isRightToLeft: 0
@@ -1241,7 +1264,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 2.031601, w: 0}
+  m_margin: {x: -627.556, y: 0, z: 2.031601, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

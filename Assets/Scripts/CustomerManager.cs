@@ -6,24 +6,52 @@ using TMPro;
 
 public class CustomerManager : MonoBehaviour
 {
-    [SerializeField] private CustomerData[] customers;
-
-    [Header("UI")]
     [SerializeField] private Image portraitImage;
     [SerializeField] private TextMeshProUGUI nameText;
 
-    public CustomerData CurrentCustomer {  get; private set; }
-    
+    private CustomerAnimator animator;
+
+
+    private void Awake()
+    {
+        animator = GetComponent<CustomerAnimator>();
+
+        if (animator != null)
+        {
+            Debug.Log("CustomerAnimator missing on CustomerManager GameObject");
+        }
+    }
     void Start()
     {
-        SpawnCustomer();    
+        Refresh(); 
+        if (animator != null)
+        {
+            animator.PlayEnter();
+        }
     }
 
-    public void SpawnCustomer()
+    public void Refresh()
     {
-        CurrentCustomer = customers[Random.Range(0, customers.Length)];
+        CustomerData customer = DayManager.Instance.activeCustomer;
 
-        portraitImage.sprite = CurrentCustomer.portrait;
-        nameText.text = CurrentCustomer.customerName;
+        if (customer == null ) return;
+
+        portraitImage.sprite = customer.portrait;
+        nameText.text = customer.customerName;
+    }
+
+    public IEnumerator ExitAndRefresh()
+    {
+        if (animator != null)
+        {
+            yield return animator.PlayExit();
+        }
+
+        Refresh();
+
+        if (animator != null)
+        {
+            animator.PlayEnter();
+        }  
     }
 }

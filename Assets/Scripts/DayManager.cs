@@ -10,25 +10,27 @@ public class DayManager : MonoBehaviour
     [Header("Day Settings")]
     [SerializeField] private int customersPerDay = 5;
     [SerializeField] private float dailyCashGoal = 200f;
+
+    [Header("Customers")]
+    [SerializeField] private CustomerData[] customers;
+
     [Header("Runtime Status")]
     public int customersRemaining;
     public bool dayActive = true;
-    public CustomerData activeCustomer;
+    public CustomerData activeCustomer { get; private set; }
 
+    private CustomerData lastCustomer;
     private Cash cashSystem;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
-            return;
+            return;            
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -41,28 +43,59 @@ public class DayManager : MonoBehaviour
     {
         customersRemaining = customersPerDay;
         dayActive = true;
+        PickNextCustomer();
+
         Debug.Log("New Day Started");
     }
 
-    // Called from shop scene
+    private void PickNextCustomer()
+    {
+        if (customers == null || customers.Length == 0)
+        {
+            Debug.Log("No customers assigned to DayManager");
+            return;
+        }    
+               
+        CustomerData next;
+        do
+        {
+            next = customers[Random.Range(0, customers.Length)];
+        }
+        while (customers.Length > 1 && next == lastCustomer);
+
+        activeCustomer = next;
+        lastCustomer = next;
+
+        Debug.Log("New customer: " + activeCustomer.customerName);
+    }
+     
+      ////////////////
+     // SHOP SCENE //
+    ////////////////
     public void AcceptCustomer()
     {
-        activeCustomer = FindObjectOfType<CustomerManager>().CurrentCustomer;
         SceneManager.LoadScene("DrawingScene");
     }
 
     public void RefuseCustomer()
     {
         customersRemaining--;
+        PickNextCustomer();
 
-        FindObjectOfType<CustomerManager>().SpawnCustomer();
+        CustomerManager cm = FindObjectOfType<CustomerManager>();
+        if (cm != null) 
+            cm.StartCoroutine(cm.ExitAndRefresh());
+
         CheckDayEnd();
     }
 
-    // Called from drawing scene
+      ///////////////////
+     // DRAWING SCENE //
+    ///////////////////
     public void FinishTattoo()
     {
         customersRemaining--;
+        PickNextCustomer();
         SceneManager.LoadScene("ShopScene");
         CheckDayEnd();
     }
