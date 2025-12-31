@@ -6,6 +6,7 @@ using UnityEngine;
 public class CustomerData : ScriptableObject
 {
     public string customerName;
+    public string customerText;
     public Sprite portrait;
     public float difficultyMultiplier = 1f;
     public float tipMultiplier = 1f;

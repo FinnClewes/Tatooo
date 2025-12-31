@@ -8,6 +8,7 @@ public class CustomerManager : MonoBehaviour
 {
     [SerializeField] private Image portraitImage;
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI customerText;
 
     private CustomerAnimator animator;
 
@@ -40,6 +41,7 @@ public class CustomerManager : MonoBehaviour
 
         portraitImage.sprite = customer.portrait;
         nameText.text = customer.customerName;
+        customerText.text = customer.customerText;
     }
 
     public IEnumerator ExitAndRefresh()
