@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Customer01
   m_EditorClassIdentifier: 
   customerName: Kyle
-  customerText: Tatooo plz
+  customerText: '"Tatooo plz"'
   portrait: {fileID: 21300000, guid: affb4d378dc36ad448cb8e7ec7ab23ce, type: 3}
   difficultyMultiplier: 1
   tipMultiplier: 1

@@ -12,4 +12,9 @@ public class SceneSwitch : MonoBehaviour
     {
         DayManager.Instance.RefuseCustomer();
     }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("ShopScene");
+    }
 }
