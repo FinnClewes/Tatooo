@@ -16,6 +16,7 @@ public class SceneSwitch : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene("ShopScene");
+        DayManager.Instance.StartNewDay();
     }
 
     public void ExitGame()

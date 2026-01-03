@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class DayManager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class DayManager : MonoBehaviour
 
     [Header("Day Settings")]
     [SerializeField] private int customersPerDay = 5;
-    [SerializeField] public float dailyCashGoal = 200f;
+    [SerializeField] public float originalCashGoal = 200f;
 
     [Header("Customers")]
     [SerializeField] private CustomerData[] customers;
@@ -17,6 +18,8 @@ public class DayManager : MonoBehaviour
     [Header("Runtime Status")]
     public int customersRemaining;
     public bool dayActive = true;
+    public float dailyCashGoal;
+    public int dayNumber = 0;
     public CustomerData activeCustomer { get; private set; }
 
     private CustomerData lastCustomer;
@@ -52,6 +55,9 @@ public class DayManager : MonoBehaviour
         dayActive = true;
         PickNextCustomer();
         UpdateCustomersUI();
+        dayNumber++;
+
+        FindObjectOfType<DayNumberUI>()?.UpdateDayText();
 
         Debug.Log("New Day Started");
     }
@@ -137,6 +143,9 @@ public class DayManager : MonoBehaviour
         else
         {
             Debug.Log("Game Over - cash goal not met");
+            Cash.Instance.playerMoney = 0;
+            dailyCashGoal = originalCashGoal;
+            dayNumber = 0;
             SceneManager.LoadScene("GameOverScene");
         }
     }

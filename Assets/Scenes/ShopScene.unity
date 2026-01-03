@@ -798,13 +798,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customersPerDay: 5
-  dailyCashGoal: 200
+  originalCashGoal: 200
   customers:
   - {fileID: 11400000, guid: 7bab065ef0ebe8947abea48395549429, type: 2}
   - {fileID: 11400000, guid: 40716fd05c81a3b4297152b960d5c254, type: 2}
   - {fileID: 11400000, guid: 4fabf0bec9a714149927bf137e3be774, type: 2}
   customersRemaining: 0
   dayActive: 1
+  dailyCashGoal: 200
 --- !u!4 &792003736
 Transform:
   m_ObjectHideFlags: 0
