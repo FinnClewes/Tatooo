@@ -80,12 +80,6 @@ public class DayManager : MonoBehaviour
         activeCustomer = next;
         lastCustomer = next;
 
-        CustomerManager cm = FindObjectOfType<CustomerManager>();
-        if (cm != null)
-        {
-            cm.EnterAndRefresh();
-        }
-
         Debug.Log("New customer: " + activeCustomer.customerName);
     }
      
@@ -103,7 +97,7 @@ public class DayManager : MonoBehaviour
         PickNextCustomer();
 
         CustomerManager cm = FindObjectOfType<CustomerManager>();
-        if (cm != null) 
+        if (cm != null)
             cm.StartCoroutine(cm.ExitAndRefresh());
 
         UpdateCustomersUI();
@@ -113,9 +107,15 @@ public class DayManager : MonoBehaviour
 
     private void UpdateCustomersUI()
     {
+
+        /*CustomerManager cm = FindObjectOfType<CustomerManager>();
+        if (cm != null)
+            cm.StartCoroutine(cm.ExitAndRefresh());*/
+
         CustomersLeftUI ui = FindObjectOfType<CustomersLeftUI>();
         if (ui != null)
             ui.UpdateText();
+
     }
 
     ///////////////////

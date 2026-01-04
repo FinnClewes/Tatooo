@@ -582,7 +582,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: text
+  m_text: '"Hello"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1785,7 +1785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: name
+  m_text: Bob
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1946,8 +1946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20113a3c2d69ee47b19445d77f27a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slideDuration: 0.5
-  slideDistance: 800
+  slideDuration: 0.25
+  slideDistance: 700
 --- !u!1 &1730321519
 GameObject:
   m_ObjectHideFlags: 0

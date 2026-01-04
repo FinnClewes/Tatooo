@@ -35,12 +35,16 @@ public class CustomerAnimator : MonoBehaviour
 
     public IEnumerator PlayEnter()
     {
-        //rect.anchoredPosition = offScreenLeft;
+        rect.anchoredPosition = offScreenLeft;
+        yield return SlideTo(onScreenPos);
+        yield return SlideTo(offScreenRight);
+        rect.anchoredPosition = offScreenLeft;
         yield return SlideTo(onScreenPos);
     }
 
     public IEnumerator PlayExit() // Exits cust. 1, enters cust. 2
     {
+        rect.anchoredPosition = onScreenPos;
         yield return SlideTo(offScreenRight);
         rect.anchoredPosition = offScreenLeft;
         yield return SlideTo(onScreenPos);

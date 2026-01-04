@@ -34,7 +34,7 @@ public class CustomerManager : MonoBehaviour
         StartCoroutine(EnterRoutine());
     }
 
-    private IEnumerator EnterRoutine()
+    public IEnumerator EnterRoutine()
     {
         Refresh();
         yield return animator.PlayEnter();
@@ -55,6 +55,7 @@ public class CustomerManager : MonoBehaviour
 
     public IEnumerator ExitAndRefresh()
     {
+        Refresh();
         yield return animator.PlayExit();
     }
 
