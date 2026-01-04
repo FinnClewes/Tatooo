@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Sprites;
 
 public class CustomerManager : MonoBehaviour
 {
-    [SerializeField] private Image portraitImage;
+    [SerializeField] private SpriteRenderer portraitImage;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI customerText;
 
