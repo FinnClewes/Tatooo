@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CustomerManager : MonoBehaviour
 {
@@ -12,23 +13,30 @@ public class CustomerManager : MonoBehaviour
 
     private CustomerAnimator animator;
 
-
     private void Awake()
     {
         animator = GetComponent<CustomerAnimator>();
 
-        if (animator != null)
+        if (animator == null)
         {
             Debug.Log("CustomerAnimator missing on CustomerManager GameObject");
         }
     }
     void Start()
     {
-        Refresh(); 
-        if (animator != null)
-        {
-            animator.PlayEnter();
-        }
+        //EnterAndRefresh();
+    }
+
+    public void EnterAndRefresh()
+    {
+        StopAllCoroutines();
+        StartCoroutine(EnterRoutine());
+    }
+
+    private IEnumerator EnterRoutine()
+    {
+        Refresh();
+        yield return animator.PlayEnter();
     }
 
     public void Refresh()
@@ -46,16 +54,26 @@ public class CustomerManager : MonoBehaviour
 
     public IEnumerator ExitAndRefresh()
     {
-        if (animator != null)
+        yield return animator.PlayExit();
+    }
+
+    private void OnEnable()
+    {
+        // Listen for load scene events
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Only trigger if back in shop scene
+        if (scene.name == "ShopScene")
         {
-            yield return animator.PlayExit();
+            EnterAndRefresh();
         }
-
-        Refresh();
-
-        if (animator != null)
-        {
-            animator.PlayEnter();
-        }  
     }
 }

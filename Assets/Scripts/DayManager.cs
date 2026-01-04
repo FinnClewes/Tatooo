@@ -80,6 +80,12 @@ public class DayManager : MonoBehaviour
         activeCustomer = next;
         lastCustomer = next;
 
+        CustomerManager cm = FindObjectOfType<CustomerManager>();
+        if (cm != null)
+        {
+            cm.EnterAndRefresh();
+        }
+
         Debug.Log("New customer: " + activeCustomer.customerName);
     }
      
@@ -89,7 +95,20 @@ public class DayManager : MonoBehaviour
     public void AcceptCustomer()
     {
         SceneManager.LoadScene("DrawingScene");
+        //StartCoroutine(AcceptRoutine());
     }
+
+   /* private IEnumerator AcceptRoutine()
+    {
+        *//*CustomerManager cm = FindObjectOfType<CustomerManager>();
+
+        if (cm != null )
+        {
+            yield return cm.ExitAndRefresh();
+        }*//*
+
+        //SceneManager.LoadScene("DrawingScene");
+    }*/
 
     public void RefuseCustomer()
     {
