@@ -20,6 +20,7 @@ public class DrawWithMouse : MonoBehaviour
     [SerializeField] private Collider2D drawingArea;
 
     private Vector3[] stencilPoints;
+    AudioSource audioData;
 
     private void Start()
     {
@@ -40,6 +41,8 @@ public class DrawWithMouse : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             CreateNewLine();
+            audioData = GetComponent<AudioSource>();
+            audioData.Play(0);
         }
 
         if (Input.GetMouseButton(0) && currentLine != null)
