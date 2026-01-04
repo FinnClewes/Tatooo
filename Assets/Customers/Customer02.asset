@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   customerName: Sara
   customerText: '"Shut up and give me a tattoo"'
-  portrait: {fileID: 21300000, guid: 0e12df5b0b3ee3d4490d33bb591bf271, type: 3}
+  portrait: {fileID: 21300000, guid: 4f645107e70fa904ab4507d5752bf339, type: 3}
   difficultyMultiplier: 2
   tipMultiplier: 0.5
